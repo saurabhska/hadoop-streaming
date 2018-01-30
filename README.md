@@ -6,7 +6,7 @@ A sample hadoop-streaming map-reduce program. The goal of this program is to cou
 cat sample_input.txt | python mapper.py | sort | python reducer.py
 
 # Run on Hadoop/EMR cluster - 
-hadoop jar /usr/lib/hadoop/hadoop-streaming.jar -mapper 'python /home/hadoop/mapper.py' -reducer 'python /home/hadoop/reducer.py' -input 's3://<my-input-location>/' -output 's3://<my-output-location>/'
+hadoop jar /usr/lib/hadoop/hadoop-streaming.jar -files /home/hadoop/mapper.py,/home/hadoop/reducer.py -mapper 'mapper.py' -reducer 'reducer.py' -input 's3://<loc>' -output 's3://<loc>'
 
 # References - 
 https://hadoop.apache.org/docs/current/hadoop-streaming/HadoopStreaming.html
